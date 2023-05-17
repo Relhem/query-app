@@ -9,14 +9,13 @@ app.options('*', cors());
 const port = process.env.PORT || 3000;
 const token = process.env.TOKEN;
 
-const bot = new TelegramBot(token, {polling: true});
-
-bot.on('message', (msg, meta) => {
-  console.log(msg);
-});
+// const bot = new TelegramBot(token, {polling: true});
+// bot.on('message', (msg, meta) => {
+//   console.log(msg);
+// });
 
 app.get('/', (req, res) => {
-  console.log('body', req.params);
+  console.log('body', JSON.stringify(req.params));
   res.send({ message: 'Hello WWW!' });
 });
 
