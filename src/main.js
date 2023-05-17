@@ -1,17 +1,25 @@
 const express = require('express');
 const cors = require('cors')
 const app = express();
+const TelegramBot = require('node-telegram-bot-api');
 require('dotenv').config();
 
 app.options('*', cors());
 
 const port = process.env.PORT || 3000;
+const token = process.env.TOKEN;
 
-console.log(process.env.test);
+const bot = new TelegramBot(token);
+
+bot.on('message', (msg, meta) => {
+  console.log(msg);
+});
 
 app.get('/', (req, res) => {
-    res.send({ message: 'Hello WWW!' });
+  console.log('body', req.body);
+  res.send({ message: 'Hello WWW!' });
 });
+
 app.listen(port, () => {
     console.log(`Application listening on port ${port}!`);
 });
