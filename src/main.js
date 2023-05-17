@@ -1,14 +1,12 @@
-const http = require('http');
+const express = require('express');
+const cors = require('cors')
+const app = express();
 
-const hostname = '127.0.0.1';
-const port = 8080;
+app.options('*', cors())
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World');
+app.get('/', (req, res) => {
+    res.send({ message: 'Hello WWW!' });
 });
-
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+app.listen(3000, () => {
+    console.log('Application listening on port 3333!');
 });
