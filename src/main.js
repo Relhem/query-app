@@ -2,11 +2,13 @@ const express = require('express');
 const cors = require('cors')
 const app = express();
 
-app.options('*', cors())
+app.options('*', cors());
+
+const port = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
     res.send({ message: 'Hello WWW!' });
 });
-app.listen(3000, () => {
-    console.log('Application listening on port 3333!');
+app.listen(port, () => {
+    console.log(`Application listening on port ${port}!`);
 });
